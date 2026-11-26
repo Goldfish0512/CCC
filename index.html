@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN" data-type="software">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="page-type" content="software">
+<meta name="site-kind" content="software">
+<meta name="theme-color" content="#f6f5f1">
+<meta name="description" content="CCC 与 LeetCode 的提示、解法和复盘笔记。">
+<title>CCC 复习台</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="data.js"></script><script defer src="guides.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#practice">跳到本题</a>
+<header class="top">
+  <a class="brand" href="./" id="home-link">CCC<span>复习台</span></a>
+  <button id="find" type="button" class="find"><span>查题号、题名、算法</span><kbd>Ctrl K</kbd></button>
+  <nav aria-label="复习操作">
+    <button type="button" id="nav-review">待复习 <span id="nav-due">0</span></button>
+    <button type="button" id="open-templates">算法模板</button>
+    <button type="button" id="open-resources">群资料</button>
+    <button type="button" id="backup">备份</button>
+  </nav>
+</header>
+<main class="workspace" id="practice" tabindex="-1">
+  <div class="column">
+    <div class="problem-head" data-enter id="problem-head"></div>
+    <section id="statement" class="statement" aria-label="题意"></section>
+    <section class="sheet" id="sheet" aria-label="本题资料"></section>
+  </div>
+  <aside class="ledger" id="ledger" aria-label="熟练度与复习"></aside>
+</main>
+<dialog id="search-dialog" aria-labelledby="search-title">
+  <div class="dialog-head"><h2 id="search-title">查题</h2><button type="button" class="close" data-close="search-dialog" aria-label="关闭查题">Esc</button></div>
+  <label for="search" class="sr">题号、题名或算法</label><input id="search" autocomplete="off" placeholder="例如 2662、0–1 BFS、并查集">
+  <div id="search-summary" class="search-summary" role="status"></div>
+  <div id="list" class="list" aria-label="匹配的题目"></div>
+  <div class="search-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> 选择</span><span><kbd>Enter</kbd> 打开</span><span><kbd>Esc</kbd> 关闭</span></div>
+</dialog>
+<dialog id="templates-dialog" class="wide-dialog" aria-labelledby="templates-title">
+  <div class="dialog-head"><h2 id="templates-title">算法模板</h2><button type="button" class="close" data-close="templates-dialog">关闭</button></div>
+  <label for="template-select" class="sr">选择算法</label><select id="template-select"></select>
+  <div id="template-content"></div>
+</dialog>
+<dialog id="resources-dialog" class="wide-dialog" aria-labelledby="resources-title">
+  <div class="dialog-head"><h2 id="resources-title">学习群资料</h2><button type="button" class="close" data-close="resources-dialog">关闭</button></div>
+  <dl class="resource-list">
+    <div><dt>练 CCC 真题</dt><dd>用 Waterloo 官网查年度题目与题解，用 DMOJ 提交 Java 练习。<p class="resource-links"><a href="https://cemc.uwaterloo.ca/resources/past-contests" target="_blank" rel="noopener">CEMC 历年真题</a><a href="https://dmoj.ca/" target="_blank" rel="noopener">DMOJ 提交平台</a></p></dd></div>
+    <div><dt>有序矩阵的两种条件</dt><dd>每行已排序且行与行之间严格递增，可以摊平二分。只有逐行逐列递增时，用右上角阶梯搜索。</dd></div>
+    <div><dt>链表与公共祖先</dt><dd>并排比较快慢指针、反转链表和父指针求交点。普通二叉树的公共祖先变体还要分清目标是否保证存在。</dd></div>
+    <div><dt>二维前缀和图解</dt><dd>看四块面积如何相加减，再回到 LC 304 推一次容斥。<p class="resource-links"><a href="https://leetcode.com/problems/range-sum-query-2d-immutable/solutions/7103350/beats-100-graphical-guide-from-naive-1d-lm2vx/" target="_blank" rel="noopener">群内分享的 LC 304 图解</a></p></dd></div>
+  </dl>
+</dialog>
+<dialog id="backup-dialog" aria-labelledby="backup-title">
+  <form method="dialog">
+    <div class="dialog-head"><h2 id="backup-title">进度备份</h2><button value="close" class="close">关闭</button></div>
+    <p>进度和笔记保存在当前浏览器。换设备或搬动文件时，可先导出，再在新的位置导入。</p>
+    <div class="actions"><button class="primary" type="button" id="export">导出 JSON</button><label class="file-button">导入 JSON<input type="file" id="import" accept=".json,application/json"></label></div>
+    <p id="backup-status" role="status"></p>
+  </form>
+</dialog>
+<div role="status" id="toast" class="toast" hidden></div>
+</body>
+</html>
